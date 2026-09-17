@@ -1,0 +1,169 @@
+<mvc:View
+  controllerName="sap.mdq.checker.controller.Main"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  xmlns:f="sap.f"
+  xmlns:layout="sap.ui.layout"
+  xmlns:core="sap.ui.core"
+  displayBlock="true">
+
+  <Page id="mainPage" title="SAP Master Data Quality Checker" showHeader="true">
+    <headerContent>
+      <Button icon="sap-icon://download" text="Export CSV" press=".onExportCSV" type="Transparent"/>
+      <Button icon="sap-icon://excel-attachment" text="Export Excel" press=".onExportExcel" type="Transparent"/>
+    </headerContent>
+
+    <content>
+      <!-- Header Quick Stats Grid -->
+      <layout:Grid defaultSpan="XL3 L3 M6 S12" class="sapUiSmallMarginTopBottom">
+        <!-- Card 1: Global Quality Score -->
+        <GenericTile header="Overall Quality Score" subheader="Global SAP Instance" class="mdqTileCard">
+          <tileContent>
+            <TileContent footer="Quality Rating Band">
+              <NumericContent value="{/summary/globalScore}" scale="%" valueColor="Good" indicator="Up"/>
+            </TileContent>
+          </tileContent>
+        </GenericTile>
+
+        <!-- Card 2: Total Records Evaluated -->
+        <GenericTile header="Records Evaluated" subheader="MM, SD, FI &amp; BP Domains" class="mdqTileCard">
+          <tileContent>
+            <TileContent footer="Master Data Entries">
+              <NumericContent value="{/summary/totalRecords}" valueColor="Neutral"/>
+            </TileContent>
+          </tileContent>
+        </GenericTile>
+
+        <!-- Card 3: Critical Findings -->
+        <GenericTile header="Critical Findings" subheader="High Risk Data Defects" class="mdqTileCard">
+          <tileContent>
+            <TileContent footer="Requires Immediate Action">
+              <NumericContent value="{/summary/criticalFindings}" valueColor="Error"/>
+            </TileContent>
+          </tileContent>
+        </GenericTile>
+
+        <!-- Card 4: Duplicates Detected -->
+        <GenericTile header="Duplicates Detected" subheader="Levenshtein Fuzzy Matches" class="mdqTileCard">
+          <tileContent>
+            <TileContent footer="Potential Replications">
+              <NumericContent value="{/summary/totalDuplicates}" valueColor="Critical"/>
+            </TileContent>
+          </tileContent>
+        </GenericTile>
+      </layout:Grid>
+
+      <!-- Main IconTabBar Container -->
+      <IconTabBar id="iconTabBar" class="sapUiResponsiveContentPadding">
+        <items>
+          <!-- Tab 1: Quality Scores by Record -->
+          <IconTabFilter icon="sap-icon://donut-chart" text="Quality Scores">
+            <VBox class="sapUiSmallMargin">
+              <Table id="scoresTable" items="{/scores}" autoPopinMode="true">
+                <headerToolbar>
+                  <OverflowToolbar>
+                    <Title text="Master Data Quality Score Ranking" level="H2"/>
+                    <ToolbarSpacer/>
+                    <SearchField placeholder="Search by Object Key..." search=".onSearchScores" width="300px"/>
+                  </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                  <Column><Text text="Domain"/></Column>
+                  <Column><Text text="Master Data Key"/></Column>
+                  <Column><Text text="Quality Score (%)"/></Column>
+                  <Column><Text text="Rating Classification"/></Column>
+                  <Column><Text text="Quality Findings"/></Column>
+                </columns>
+                <items>
+                  <ColumnListItem>
+                    <cells>
+                      <ObjectIdentifier title="{objectType}"/>
+                      <Text text="{objectKey}"/>
+                      <ObjectNumber number="{score}" unit="%" state="{= ${score} >= 85 ? 'Success' : (${score} >= 70 ? 'Warning' : 'Error') }"/>
+                      <ObjectStatus text="{ratingBand}" state="{= ${ratingBand} === 'EXCELLENT' || ${ratingBand} === 'GOOD' ? 'Success' : (${ratingBand} === 'FAIR' ? 'Warning' : 'Error') }"/>
+                      <Badge text="{findingsCount} Defect(s)"/>
+                    </cells>
+                  </ColumnListItem>
+                </items>
+              </Table>
+            </VBox>
+          </IconTabFilter>
+
+          <!-- Tab 2: Detailed Quality Findings -->
+          <IconTabFilter icon="sap-icon://alert" text="Defect Findings">
+            <VBox class="sapUiSmallMargin">
+              <Table id="findingsTable" items="{/findings}">
+                <headerToolbar>
+                  <OverflowToolbar>
+                    <Title text="Granular Quality Findings &amp; Root Cause Messages" level="H2"/>
+                    <ToolbarSpacer/>
+                    <Select change=".onFilterSeverity">
+                      <core:Item key="ALL" text="All Severities"/>
+                      <core:Item key="CRITICAL" text="Critical Only"/>
+                      <core:Item key="HIGH" text="High Only"/>
+                      <core:Item key="MEDIUM" text="Medium Only"/>
+                    </Select>
+                  </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                  <Column><Text text="Domain"/></Column>
+                  <Column><Text text="Master Data Key"/></Column>
+                  <Column><Text text="Rule ID"/></Column>
+                  <Column><Text text="Severity"/></Column>
+                  <Column><Text text="Defective Field"/></Column>
+                  <Column><Text text="Remediation / Root Cause Message"/></Column>
+                </columns>
+                <items>
+                  <ColumnListItem>
+                    <cells>
+                      <Text text="{objectType}"/>
+                      <Text text="{objectKey}"/>
+                      <ObjectIdentifier title="{ruleId}"/>
+                      <ObjectStatus text="{severity}" state="{= ${severity} === 'CRITICAL' ? 'Error' : (${severity} === 'HIGH' ? 'Warning' : 'Information') }"/>
+                      <Code text="{fieldName}"/>
+                      <Text text="{message}"/>
+                    </cells>
+                  </ColumnListItem>
+                </items>
+              </Table>
+            </VBox>
+          </IconTabFilter>
+
+          <!-- Tab 3: Duplicate Analysis (Levenshtein Fuzzy Matches) -->
+          <IconTabFilter icon="sap-icon://copy" text="Duplicate Analysis">
+            <VBox class="sapUiSmallMargin">
+              <Table id="duplicatesTable" items="{/duplicates}">
+                <headerToolbar>
+                  <OverflowToolbar>
+                    <Title text="Duplicate Findings (Exact &amp; Fuzzy Levenshtein Matches)" level="H2"/>
+                  </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                  <Column><Text text="Domain"/></Column>
+                  <Column><Text text="Primary Key"/></Column>
+                  <Column><Text text="Matching Key"/></Column>
+                  <Column><Text text="Similarity (%)"/></Column>
+                  <Column><Text text="Match Type"/></Column>
+                  <Column><Text text="Details &amp; Analysis"/></Column>
+                </columns>
+                <items>
+                  <ColumnListItem>
+                    <cells>
+                      <Text text="{objectType}"/>
+                      <Text text="{primaryKey}"/>
+                      <Text text="{matchKey}"/>
+                      <ObjectNumber number="{similarity}" unit="%" state="Warning"/>
+                      <ObjectStatus text="{matchType}" state="{= ${matchType} === 'EXACT_TAX_ID' ? 'Error' : 'Warning' }"/>
+                      <Text text="{details}"/>
+                    </cells>
+                  </ColumnListItem>
+                </items>
+              </Table>
+            </VBox>
+          </IconTabFilter>
+
+        </items>
+      </IconTabBar>
+    </content>
+  </Page>
+</mvc:View>

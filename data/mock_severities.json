@@ -1,0 +1,22 @@
+[
+  {
+    "SEVERITY_CODE": "CRITICAL",
+    "DESCRIPTION": "Critical master data defect preventing key business process execution",
+    "DEDUCTION_POINTS": 25
+  },
+  {
+    "SEVERITY_CODE": "HIGH",
+    "DESCRIPTION": "High severity defect causing operational friction or EDI failure",
+    "DEDUCTION_POINTS": 15
+  },
+  {
+    "SEVERITY_CODE": "MEDIUM",
+    "DESCRIPTION": "Medium severity defect missing secondary data or payment conditions",
+    "DEDUCTION_POINTS": 10
+  },
+  {
+    "SEVERITY_CODE": "LOW",
+    "DESCRIPTION": "Low severity defect missing optional fields or classification attributes",
+    "DEDUCTION_POINTS": 5
+  }
+]

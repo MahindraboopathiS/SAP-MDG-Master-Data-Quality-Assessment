@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAP Master Data Quality Checker - Analytical Dashboard</title>
+
+  <!-- SAPUI5 Bootstrap via OpenUI5 CDN -->
+  <script id="sap-ui-bootstrap"
+    src="https://sdk.openui5.org/resources/sap-ui-core.js"
+    data-sap-ui-theme="sap_horizon"
+    data-sap-ui-libs="sap.m, sap.ui.layout, sap.ui.table, sap.ui.unified"
+    data-sap-ui-resourceroots='{ "sap.mdq.checker": "./" }'
+    data-sap-ui-async="true"
+    data-sap-ui-oninit="module:sap/ui/core/ComponentSupport">
+  </script>
+
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="sapUiBody sapUiSizeCompact" id="content">
+  <div data-sap-ui-component
+    data-name="sap.mdq.checker"
+    data-id="container"
+    data-settings='{ "id": "sap.mdq.checker" }'>
+  </div>
+</body>
+</html>

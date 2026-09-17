@@ -1,0 +1,26 @@
+# OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# IDE & Editor caches
+.idea/
+.vscode/
+*.suo
+*.user
+*.userospend
+*.sln.docstates
+
+# Development transient & build artifacts
+*.log
+*.tmp
+*.bak
+node_modules/
+dist/
+build/
+coverage/
+.abapgit.xml.tmp
+
+# Antigravity / Gemini temporary files
+.gemini/

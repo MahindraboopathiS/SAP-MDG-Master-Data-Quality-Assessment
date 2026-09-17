@@ -1,0 +1,24 @@
+[
+  {
+    "MANDT": "100",
+    "LIFNR": "0000200001",
+    "NAME1": "Global Logistics Services SRL",
+    "STRAS": "Av. Corrientes 500",
+    "ORT01": "Buenos Aires",
+    "PSTLZ": "C1043AAB",
+    "LAND1": "AR",
+    "STCD1": "30998877661",
+    "SPERR": ""
+  },
+  {
+    "MANDT": "100",
+    "LIFNR": "0000200002",
+    "NAME1": "Hardware Supplies Ltd",
+    "STRAS": "",
+    "ORT01": "",
+    "PSTLZ": "",
+    "LAND1": "DE",
+    "STCD1": "",
+    "SPERR": ""
+  }
+]

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+  <edmx:DataServices m:DataServiceVersion="2.0">
+    <Schema Namespace="ZMDQ_MASTER_DATA_QUALITY_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+      
+      <!-- Entity Type: QualityScore -->
+      <EntityType Name="QualityScore" sap:content-version="1">
+        <Key>
+          <PropertyRef Name="ObjectType" />
+          <PropertyRef Name="ObjectKey" />
+        </Key>
+        <Property Name="ObjectType" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Object Type" sap:creatable="false" sap:updatable="false" />
+        <Property Name="ObjectKey" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Master Data Key" sap:creatable="false" sap:updatable="false" />
+        <Property Name="Score" Type="Edm.Decimal" Precision="5" Scale="2" Nullable="false" sap:label="Quality Score (%)" sap:creatable="false" sap:updatable="false" />
+        <Property Name="RatingBand" Type="Edm.String" MaxLength="20" sap:label="Rating Band" sap:creatable="false" sap:updatable="false" />
+        <Property Name="FindingsCount" Type="Edm.Int32" sap:label="Total Findings" sap:creatable="false" sap:updatable="false" />
+        <NavigationProperty Name="ValidationResults" Relationship="ZMDQ_MASTER_DATA_QUALITY_SRV.ScoreToResults" FromRole="FromScore" ToRole="ToResult" />
+      </EntityType>
+
+      <!-- Entity Type: ValidationResult -->
+      <EntityType Name="ValidationResult" sap:content-version="1">
+        <Key>
+          <PropertyRef Name="ExecutionId" />
+          <PropertyRef Name="ObjectType" />
+          <PropertyRef Name="ObjectKey" />
+          <PropertyRef Name="RuleId" />
+        </Key>
+        <Property Name="ExecutionId" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Execution ID" />
+        <Property Name="ObjectType" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Object Type" />
+        <Property Name="ObjectKey" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Object Key" />
+        <Property Name="RuleId" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Rule ID" />
+        <Property Name="Severity" Type="Edm.String" MaxLength="10" sap:label="Severity Level" />
+        <Property Name="FieldName" Type="Edm.String" MaxLength="30" sap:label="Defective Field" />
+        <Property Name="Message" Type="Edm.String" MaxLength="255" sap:label="Diagnostic Message" />
+      </EntityType>
+
+      <!-- Entity Type: DuplicateFinding -->
+      <EntityType Name="DuplicateFinding" sap:content-version="1">
+        <Key>
+          <PropertyRef Name="ObjectType" />
+          <PropertyRef Name="PrimaryKey" />
+          <PropertyRef Name="MatchKey" />
+        </Key>
+        <Property Name="ObjectType" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Object Type" />
+        <Property Name="PrimaryKey" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Primary Record Key" />
+        <Property Name="MatchKey" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Matching Record Key" />
+        <Property Name="Similarity" Type="Edm.Decimal" Precision="5" Scale="2" sap:label="Similarity (%)" />
+        <Property Name="MatchType" Type="Edm.String" MaxLength="30" sap:label="Match Type" />
+        <Property Name="Details" Type="Edm.String" MaxLength="255" sap:label="Match Details" />
+      </EntityType>
+
+      <!-- Relationships -->
+      <Association Name="ScoreToResults">
+        <End Type="ZMDQ_MASTER_DATA_QUALITY_SRV.QualityScore" Role="FromScore" Multiplicity="1" />
+        <End Type="ZMDQ_MASTER_DATA_QUALITY_SRV.ValidationResult" Role="ToResult" Multiplicity="*" />
+        <ReferentialConstraint>
+          <Principal Role="FromScore">
+            <PropertyRef Name="ObjectType" />
+            <PropertyRef Name="ObjectKey" />
+          </Principal>
+          <Dependent Role="ToResult">
+            <PropertyRef Name="ObjectType" />
+            <PropertyRef Name="ObjectKey" />
+          </Dependent>
+        </ReferentialConstraint>
+      </Association>
+
+      <!-- Entity Container -->
+      <EntityContainer Name="ZMDQ_MASTER_DATA_QUALITY_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+        <EntitySet Name="QualityScores" EntityType="ZMDQ_MASTER_DATA_QUALITY_SRV.QualityScore" sap:content-version="1" />
+        <EntitySet Name="ValidationResults" EntityType="ZMDQ_MASTER_DATA_QUALITY_SRV.ValidationResult" sap:content-version="1" />
+        <EntitySet Name="DuplicateFindings" EntityType="ZMDQ_MASTER_DATA_QUALITY_SRV.DuplicateFinding" sap:content-version="1" />
+        <AssociationSet Name="ScoreToResultsSet" Association="ZMDQ_MASTER_DATA_QUALITY_SRV.ScoreToResults">
+          <End Role="FromScore" EntitySet="QualityScores" />
+          <End Role="ToResult" EntitySet="ValidationResults" />
+        </AssociationSet>
+      </EntityContainer>
+
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

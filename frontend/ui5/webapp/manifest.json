@@ -1,0 +1,58 @@
+{
+  "_version": "1.40.0",
+  "sap.app": {
+    "id": "sap.mdq.checker",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "title": "SAP Master Data Quality Checker",
+    "description": "Enterprise Analytical Dashboard for Master Data Quality Audit, Scoring & Duplicate Analysis",
+    "sourceTemplate": {
+      "id": "html5moduletemplate",
+      "version": "1.40.0"
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "rootView": {
+      "viewName": "sap.mdq.checker.view.Main",
+      "type": "XML",
+      "async": true,
+      "id": "MainView"
+    },
+    "dependencies": {
+      "minUI5Version": "1.108.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.layout": {},
+        "sap.ui.table": {},
+        "sap.ui.unified": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "": {
+        "type": "sap.ui.model.json.JSONModel"
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    }
+  }
+}

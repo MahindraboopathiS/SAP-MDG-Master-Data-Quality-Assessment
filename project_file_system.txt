@@ -1,0 +1,79 @@
+================================================================================
+SAP MASTER DATA QUALITY CHECKER - PROJECT FILE SYSTEM LAYOUT
+================================================================================
+
+d:\Ignacio\Freelance\GitHub Projects\SAP-master-data-quality-checker\
+├── .agents/
+│   └── AGENTS.md                       # Agent governance rules & engineering standards
+├── .git/                               # Git repository metadata
+├── .github/
+│   └── workflows/
+│       └── ci.yml                      # GitHub Actions CI pipeline configuration
+├── docs/
+│   ├── architecture.md                 # Layered architecture & DI design document
+│   ├── functional-flow.md              # Functional validation execution workflow
+│   ├── data-model.md                   # Master Data entities & Customizing schema
+│   ├── testing.md                      # ABAP Unit & Offline Mock testing strategy
+│   └── security.md                     # SAP Authority checks & BAL Logging specs
+├── abap/
+│   ├── ZMDQ_CHECKER_REPORT.prog.abap   # Main executable ABAP report (Selection Screen & GUI UI)
+│   ├── ZIF_MDQ_CONSTANTS.intf.abap     # Core domain constants & threshold definitions
+│   ├── ZIF_MDQ_REPOSITORY.intf.abap    # Repository interface for data access
+│   ├── ZIF_MDQ_RULE_ENGINE.intf.abap   # Interface for quality rule engine
+│   ├── ZIF_MDQ_SCORING_ENGINE.intf.abap# Interface for scoring calculation engine
+│   ├── ZIF_MDQ_DUPLICATE_ENGINE.intf.abap# Interface for duplicate detection
+│   ├── ZCL_MDQ_REPOSITORY.clas.abap    # Production data access implementation (Open SQL / HANA)
+│   ├── ZCL_MDQ_REPO_MOCK.clas.abap     # Offline mock data access implementation
+│   ├── ZCL_MDQ_RULE_ENGINE.clas.abap   # Main rule execution engine (28 rules FR-001..FR-028)
+│   ├── ZCL_MDQ_RULE_ENGINE_TEST.clas.abap# ABAP Unit test suite for Rule Engine
+│   ├── ZCL_MDQ_SCORING_ENGINE.clas.abap# Master data quality score evaluator
+│   ├── ZCL_MDQ_SCORING_ENGINE_TEST.clas.abap# ABAP Unit test suite for Scoring Engine
+│   ├── ZCL_MDQ_DUPLICATE_ENGINE.clas.abap# Fuzzy Levenshtein string similarity duplicate detector
+│   ├── ZCL_MDQ_DUPLICATE_ENGINE_TEST.clas.abap# ABAP Unit test suite for Duplicate Engine
+│   ├── ZCL_MDQ_REPORT_SERVICE.clas.abap# Application service & execution orchestrator
+│   ├── ZCL_MDQ_REPORT_SALV.clas.abap   # SALV Grid presentation service with color highlighting
+│   ├── ZCL_MDQ_AUTH_SERVICE.clas.abap  # SAP Authority check validator
+│   ├── ZCL_MDQ_EXPORT_SERVICE.clas.abap# Formatting & exporter (Excel XML & Comma-separated CSV)
+│   └── CX_MDQ_QUALITY_ERROR.clas.abap  # Class-based exception handler
+├── integration/
+│   ├── cds/
+│   │   ├── ZI_MDQ_MATERIALQUALITY.ddls.asddls     # Material Quality CDS View (S/4HANA)
+│   │   ├── ZI_MDQ_CUSTOMERQUALITY.ddls.asddls     # Customer Quality CDS View (S/4HANA)
+│   │   ├── ZI_MDQ_VENDORQUALITY.ddls.asddls       # Vendor Quality CDS View (S/4HANA)
+│   │   └── ZI_MDQ_BUSINESSPARTNERQUALITY.ddls.asddls# Business Partner Quality CDS View (S/4HANA)
+│   └── odata/
+│       ├── metadata.xml                # OData V2 $metadata schema specification
+│       └── ZMDQ_ANNOTATIONS.xml        # SAP Fiori UI annotations (LineItem, DataPoint, Charts)
+├── frontend/
+│   └── ui5/
+│       └── webapp/
+│           ├── index.html              # SAPUI5 standalone launcher (sap_horizon theme)
+│           ├── manifest.json           # SAP Fiori application descriptor
+│           ├── Component.js            # UIComponent entry point
+│           ├── view/
+│           │   └── Main.view.xml       # Analytical Dashboard View (Tiles, Charts, Table)
+│           ├── controller/
+│           │   └── Main.controller.js  # Controller for filters, interactions, and export
+│           └── css/
+│               └── style.css           # Visual styling, elevation cards & status badges
+├── data/
+│   ├── mock_mara.json                  # Mock dataset: Material Master (General Data)
+│   ├── mock_makt.json                  # Mock dataset: Material Descriptions
+│   ├── mock_marc.json                  # Mock dataset: Material Plant Data
+│   ├── mock_kna1.json                  # Mock dataset: Customer Master (General Data)
+│   ├── mock_knb1.json                  # Mock dataset: Customer Company Code Data
+│   ├── mock_lfa1.json                  # Mock dataset: Vendor Master (General Data)
+│   ├── mock_lfb1.json                  # Mock dataset: Vendor Company Code Data
+│   ├── mock_but000.json                # Mock dataset: Business Partner Header (S/4HANA)
+│   ├── mock_rules.json                 # Mock dataset: Quality Rules Configuration (28 Rules)
+│   └── mock_severities.json            # Mock dataset: Quality Rule Severities
+├── scripts/
+│   └── validate_json_mocks.js          # Node.js validation script for CI/CD pipeline
+├── .gitignore                          # Git exclusion rules
+├── LICENSE                             # Project open-source license (Apache-2.0)
+├── REQUIREMENTS.md                     # Complete functional & technical specifications
+├── README.md                           # Main project presentation & documentation (English)
+├── project_architecture.txt            # E2E Architecture description (English)
+└── project_file_system.txt             # Global project directory structure (English)
+
+================================================================================

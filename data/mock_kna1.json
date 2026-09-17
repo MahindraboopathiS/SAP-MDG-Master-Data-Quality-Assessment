@@ -1,0 +1,35 @@
+[
+  {
+    "MANDT": "100",
+    "KUNNR": "0000100001",
+    "NAME1": "ACME Corporation SA",
+    "STRAS": "Main Street 100",
+    "ORT01": "Buenos Aires",
+    "PSTLZ": "C1001AAA",
+    "LAND1": "AR",
+    "STCD1": "30112233445",
+    "SPERR": ""
+  },
+  {
+    "MANDT": "100",
+    "KUNNR": "0000100002",
+    "NAME1": "",
+    "STRAS": "",
+    "ORT01": "",
+    "PSTLZ": "",
+    "LAND1": "US",
+    "STCD1": "",
+    "SPERR": "X"
+  },
+  {
+    "MANDT": "100",
+    "KUNNR": "0000100003",
+    "NAME1": "Acme Corp S.A.",
+    "STRAS": "Main St. 102",
+    "ORT01": "Buenos Aires",
+    "PSTLZ": "C1001AAA",
+    "LAND1": "AR",
+    "STCD1": "30112233445",
+    "SPERR": ""
+  }
+]

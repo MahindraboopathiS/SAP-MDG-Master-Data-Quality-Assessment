@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+  <edmx:DataServices m:DataServiceVersion="2.0">
+    <Schema Namespace="ZMDQ_ANNOTATIONS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      
+      <Annotations Target="ZMDQ_MASTER_DATA_QUALITY_SRV.QualityScore">
+        <!-- UI Header Info -->
+        <Annotation Term="UI.HeaderInfo">
+          <Record>
+            <PropertyValue Property="TypeName" String="Master Data Quality Score" />
+            <PropertyValue Property="TypeNamePlural" String="Master Data Quality Scores" />
+            <PropertyValue Property="Title">
+              <Record Type="UI.DataField">
+                <PropertyValue Property="Value" Path="ObjectKey" />
+              </Record>
+            </PropertyValue>
+            <PropertyValue Property="Description">
+              <Record Type="UI.DataField">
+                <PropertyValue Property="Value" Path="ObjectType" />
+              </Record>
+            </PropertyValue>
+          </Record>
+        </Annotation>
+
+        <!-- UI Selection Fields (Filters) -->
+        <Annotation Term="UI.SelectionFields">
+          <Collection>
+            <PropertyPath>ObjectType</PropertyPath>
+            <PropertyPath>RatingBand</PropertyPath>
+          </Collection>
+        </Annotation>
+
+        <!-- UI LineItem Table Columns -->
+        <Annotation Term="UI.LineItem">
+          <Collection>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="ObjectType" />
+              <PropertyValue Property="Label" String="Domain" />
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="ObjectKey" />
+              <PropertyValue Property="Label" String="Master Data Key" />
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="Score" />
+              <PropertyValue Property="Label" String="Quality Score (%)" />
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="RatingBand" />
+              <PropertyValue Property="Label" String="Rating Classification" />
+            </Record>
+            <Record Type="UI.DataField">
+              <PropertyValue Property="Value" Path="FindingsCount" />
+              <PropertyValue Property="Label" String="Quality Findings" />
+            </Record>
+          </Collection>
+        </Annotation>
+
+        <!-- UI DataPoint KPI Score -->
+        <Annotation Term="UI.DataPoint" Qualifier="QualityScoreKPI">
+          <Record>
+            <PropertyValue Property="Title" String="Overall Master Data Quality Score" />
+            <PropertyValue Property="Value" Path="Score" />
+            <PropertyValue Property="TargetValue" Decimal="100" />
+            <PropertyValue Property="Visualization" EnumMember="UI.VisualizationType/Progress" />
+          </Record>
+        </Annotation>
+      </Annotations>
+
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

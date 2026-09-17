@@ -1,0 +1,254 @@
+[
+  {
+    "RULE_ID": "FR-001",
+    "OBJECT_TYPE": "MAT",
+    "FIELD_NAME": "MAKTX",
+    "DESCRIPTION": "Detect materials missing description in MAKT",
+    "SEVERITY": "CRITICAL",
+    "WEIGHT": 25,
+    "IS_ACTIVE": "X"
+  },
+  {
+    "RULE_ID": "FR-002",
+    "OBJECT_TYPE": "MAT",
+    "FIELD_NAME": "MEINS",
+    "DESCRIPTION": "Detect materials missing base unit of measure in MARA",
+    "SEVERITY": "CRITICAL",
+    "WEIGHT": 25,
+    "IS_ACTIVE": "X"
+  },
+  {
+    "RULE_ID": "FR-003",
+    "OBJECT_TYPE": "MAT",
+    "FIELD_NAME": "MATKL",
+    "DESCRIPTION": "Detect materials missing material group in MARA",
+    "SEVERITY": "HIGH",
+    "WEIGHT": 15,
+    "IS_ACTIVE": "X"
+  },
+  {
+    "RULE_ID": "FR-004",
+    "OBJECT_TYPE": "MAT",
+    "FIELD_NAME": "WERKS",
+    "DESCRIPTION": "Detect materials without plant assignment in MARC",
+    "SEVERITY": "HIGH",
+    "WEIGHT": 15,
+    "IS_ACTIVE": "X"
+  },
+  {
+    "RULE_ID": "FR-005",
+    "OBJECT_TYPE": "MAT",
+    "FIELD_NAME": "VKORG",
+    "DESCRIPTION": "Detect materials missing sales data in MVKE",
+    "SEVERITY": "MEDIUM",
+    "WEIGHT": 10,
+    "IS_ACTIVE": "X"
+  },
+  {
+    "RULE_ID": "FR-006",
+    "OBJECT_TYPE": "MAT",
+    "FIELD_NAME": "MSTAE",
+    "DESCRIPTION": "Detect blocked materials in MARA",
+    "SEVERITY": "HIGH",
+    "WEIGHT": 15,
+    "IS_ACTIVE": "X"
+  },
+  {
+    "RULE_ID": "FR-007",
+    "OBJECT_TYPE": "MAT",
+    "FIELD_NAME": "LVORM",
+    "DESCRIPTION": "Detect obsolete materials marked for deletion in MARA",
+    "SEVERITY": "MEDIUM",
+    "WEIGHT": 10,
+    "IS_ACTIVE": "X"
+  },
+  {
+    "RULE_ID": "FR-008",
+    "OBJECT_TYPE": "MAT",
+    "FIELD_NAME": "MAKTX",
+    "DESCRIPTION": "Detect duplicate materials by description in MAKT",
+    "SEVERITY": "HIGH",
+    "WEIGHT": 15,
+    "IS_ACTIVE": "X"
+  },
+  {
+    "RULE_ID": "FR-009",
+    "OBJECT_TYPE": "MAT",
+    "FIELD_NAME": "KLASS",
+    "DESCRIPTION": "Detect unclassified materials",
+    "SEVERITY": "LOW",
+    "WEIGHT": 5,
+    "IS_ACTIVE": "X"
+  },
+  {
+    "RULE_ID": "FR-010",
+    "OBJECT_TYPE": "MAT",
+    "FIELD_NAME": "GEWEI",
+    "DESCRIPTION": "Detect materials missing weight or dimensions in MARA",
+    "SEVERITY": "LOW",
+    "WEIGHT": 5,
+    "IS_ACTIVE": "X"
+  },
+  {
+    "RULE_ID": "FR-011",
+    "OBJECT_TYPE": "CUST",
+    "FIELD_NAME": "NAME1",
+    "DESCRIPTION": "Detect customers missing name in KNA1",
+    "SEVERITY": "CRITICAL",
+    "WEIGHT": 25,
+    "IS_ACTIVE": "X"
+  },
+  {
+    "RULE_ID": "FR-012",
+    "OBJECT_TYPE": "CUST",
+    "FIELD_NAME": "STRAS",
+    "DESCRIPTION": "Detect customers missing street or city address in KNA1",
+    "SEVERITY": "HIGH",
+    "WEIGHT": 15,
+    "IS_ACTIVE": "X"
+  },
+  {
+    "RULE_ID": "FR-013",
+    "OBJECT_TYPE": "CUST",
+    "FIELD_NAME": "LAND1",
+    "DESCRIPTION": "Detect customers missing country in KNA1",
+    "SEVERITY": "CRITICAL",
+    "WEIGHT": 25,
+    "IS_ACTIVE": "X"
+  },
+  {
+    "RULE_ID": "FR-014",
+    "OBJECT_TYPE": "CUST",
+    "FIELD_NAME": "STCD1",
+    "DESCRIPTION": "Detect customers missing Tax ID in KNA1",
+    "SEVERITY": "HIGH",
+    "WEIGHT": 15,
+    "IS_ACTIVE": "X"
+  },
+  {
+    "RULE_ID": "FR-015",
+    "OBJECT_TYPE": "CUST",
+    "FIELD_NAME": "ZTERM",
+    "DESCRIPTION": "Detect customers missing payment terms in KNB1",
+    "SEVERITY": "MEDIUM",
+    "WEIGHT": 10,
+    "IS_ACTIVE": "X"
+  },
+  {
+    "RULE_ID": "FR-016",
+    "OBJECT_TYPE": "CUST",
+    "FIELD_NAME": "VKORG",
+    "DESCRIPTION": "Detect customers missing sales organization in KNVV",
+    "SEVERITY": "HIGH",
+    "WEIGHT": 15,
+    "IS_ACTIVE": "X"
+  },
+  {
+    "RULE_ID": "FR-017",
+    "OBJECT_TYPE": "CUST",
+    "FIELD_NAME": "SPERR",
+    "DESCRIPTION": "Detect blocked customers in KNA1",
+    "SEVERITY": "HIGH",
+    "WEIGHT": 15,
+    "IS_ACTIVE": "X"
+  },
+  {
+    "RULE_ID": "FR-018",
+    "OBJECT_TYPE": "CUST",
+    "FIELD_NAME": "STCD1",
+    "DESCRIPTION": "Detect potentially duplicate customers by Tax ID in KNA1",
+    "SEVERITY": "HIGH",
+    "WEIGHT": 15,
+    "IS_ACTIVE": "X"
+  },
+  {
+    "RULE_ID": "FR-019",
+    "OBJECT_TYPE": "CUST",
+    "FIELD_NAME": "SMTP_ADDR",
+    "DESCRIPTION": "Detect customers missing email address",
+    "SEVERITY": "LOW",
+    "WEIGHT": 5,
+    "IS_ACTIVE": "X"
+  },
+  {
+    "RULE_ID": "FR-020",
+    "OBJECT_TYPE": "CUST",
+    "FIELD_NAME": "KDGRP",
+    "DESCRIPTION": "Detect customers missing commercial classification in KNVV",
+    "SEVERITY": "LOW",
+    "WEIGHT": 5,
+    "IS_ACTIVE": "X"
+  },
+  {
+    "RULE_ID": "FR-021",
+    "OBJECT_TYPE": "VEND",
+    "FIELD_NAME": "STCD1",
+    "DESCRIPTION": "Detect vendors missing Tax ID in LFA1",
+    "SEVERITY": "HIGH",
+    "WEIGHT": 15,
+    "IS_ACTIVE": "X"
+  },
+  {
+    "RULE_ID": "FR-022",
+    "OBJECT_TYPE": "VEND",
+    "FIELD_NAME": "ZTERM",
+    "DESCRIPTION": "Detect vendors missing payment terms in LFB1",
+    "SEVERITY": "MEDIUM",
+    "WEIGHT": 10,
+    "IS_ACTIVE": "X"
+  },
+  {
+    "RULE_ID": "FR-023",
+    "OBJECT_TYPE": "VEND",
+    "FIELD_NAME": "STRAS",
+    "DESCRIPTION": "Detect vendors missing street or city address in LFA1",
+    "SEVERITY": "HIGH",
+    "WEIGHT": 15,
+    "IS_ACTIVE": "X"
+  },
+  {
+    "RULE_ID": "FR-024",
+    "OBJECT_TYPE": "VEND",
+    "FIELD_NAME": "STCD1",
+    "DESCRIPTION": "Detect duplicate vendors by Tax ID in LFA1",
+    "SEVERITY": "HIGH",
+    "WEIGHT": 15,
+    "IS_ACTIVE": "X"
+  },
+  {
+    "RULE_ID": "FR-025",
+    "OBJECT_TYPE": "VEND",
+    "FIELD_NAME": "SPERR",
+    "DESCRIPTION": "Detect blocked vendors in LFA1",
+    "SEVERITY": "HIGH",
+    "WEIGHT": 15,
+    "IS_ACTIVE": "X"
+  },
+  {
+    "RULE_ID": "FR-026",
+    "OBJECT_TYPE": "VEND",
+    "FIELD_NAME": "EKORG",
+    "DESCRIPTION": "Detect vendors missing purchasing organization in LFM1",
+    "SEVERITY": "HIGH",
+    "WEIGHT": 15,
+    "IS_ACTIVE": "X"
+  },
+  {
+    "RULE_ID": "FR-027",
+    "OBJECT_TYPE": "VEND",
+    "FIELD_NAME": "KLASS",
+    "DESCRIPTION": "Detect vendors missing classification",
+    "SEVERITY": "LOW",
+    "WEIGHT": 5,
+    "IS_ACTIVE": "X"
+  },
+  {
+    "RULE_ID": "FR-028",
+    "OBJECT_TYPE": "VEND",
+    "FIELD_NAME": "SMTP_ADDR",
+    "DESCRIPTION": "Detect vendors missing email address",
+    "SEVERITY": "LOW",
+    "WEIGHT": 5,
+    "IS_ACTIVE": "X"
+  }
+]

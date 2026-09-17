@@ -1,0 +1,82 @@
+================================================================================
+SAP MASTER DATA QUALITY CHECKER - GLOBAL SYSTEM ARCHITECTURE
+================================================================================
+
+1. SYSTEM OVERVIEW
+--------------------------------------------------------------------------------
+The SAP Master Data Quality Checker is a production-ready, enterprise-grade 
+master data audit, scoring, duplicate detection, and completeness analysis 
+framework designed for SAP R/3 (classic ECC / Oracle DB) and SAP S/4HANA 
+(HANA DB / CDS / Fiori) environments.
+
+The solution enables SAP Functional Consultants, Data Migration Teams, MDG 
+Specialists, and Technical Developers to assess, score, and cleanse master data 
+across Material Master (MM), Customer Master (SD/FI), Vendor Master (MM/FI), 
+and Business Partner (S/4HANA BP) domains.
+
+
+2. ARCHITECTURAL LAYERS & SEPARATION OF CONCERNS (SoC)
+--------------------------------------------------------------------------------
+
++------------------------------------------------------------------------------+
+| PRESENTATION LAYER                                                           |
+|  - R/3 / ECC: SALV Grid / ALV Interactive Reports (ZCL_MDQ_REPORT_SALV)      |
+|  - S/4HANA: SAPUI5 / Fiori Elements Analytical List Page (frontend/ui5)     |
++------------------------------------------------------------------------------+
+                                      |
+                                      v
++------------------------------------------------------------------------------+
+| APPLICATION & SERVICE LAYER                                                  |
+|  - Service Orchestrator: ZCL_MDQ_REPORT_SERVICE                              |
+|  - Authorization Manager: ZCL_MDQ_AUTH_SERVICE                               |
+|  - Export Manager: ZCL_MDQ_EXPORT_SERVICE (Excel / CSV / JSON)               |
++------------------------------------------------------------------------------+
+                                      |
+                                      v
++------------------------------------------------------------------------------+
+| DOMAIN & BUSINESS LOGIC LAYER                                                |
+|  - Quality Rule Engine: ZCL_MDQ_RULE_ENGINE                                  |
+|  - Completeness Scoring Engine: ZCL_MDQ_SCORING_ENGINE                       |
+|  - Duplicate Detection Engine: ZCL_MDQ_DUPLICATE_ENGINE                      |
++------------------------------------------------------------------------------+
+                                      |
+                                      v
++------------------------------------------------------------------------------+
+| DATA ACCESS & REPOSITORY LAYER (Dependency Injection via ZIF_MDQ_REPOSITORY) |
+|  - Production Repo (S/4HANA & R/3 DB): ZCL_MDQ_REPOSITORY                    |
+|  - Offline Mock Repo (Simulation / ABAP Unit): ZCL_MDQ_REPO_MOCK             |
++------------------------------------------------------------------------------+
+                                      |
+                 +--------------------+--------------------+
+                 |                                         |
+                 v                                         v
++-----------------------------------+    +-------------------------------------+
+| SAP STANDARDS & OPEN SQL (R/3 DB) |    | SAP S/4HANA CDS VIEWS & HANA PUSHDOWN|
+|  - MARA, MAKT, MARC, MARD, MVKE   |    |  - ZI_MDQ_MaterialQuality CDS       |
+|  - KNA1, KNB1, KNVV               |    |  - ZI_MDQ_CustomerQuality CDS       |
+|  - LFA1, LFB1, LFM1               |    |  - ZI_MDQ_VendorQuality CDS         |
+|  - BUT000, BUT020, BUT0ID         |    |  - ZI_MDQ_BusinessPartnerQuality CDS|
++-----------------------------------+    +-------------------------------------+
+
+
+3. DESIGN PATTERNS & ENGINEERING PRINCIPLES
+--------------------------------------------------------------------------------
+- SOLID Principles:
+  * SRP: Single responsibility per class (Rules vs. Scoring vs. DB Access).
+  * OCP: Abstract rule interfaces allowing dynamic addition of new rules.
+  * LSP: ZCL_MDQ_REPO_MOCK seamlessly swappable for ZCL_MDQ_REPOSITORY.
+  * ISP: Focused role interfaces (ZIF_MDQ_REPOSITORY, ZIF_MDQ_RULE_ENGINE).
+  * DIP: High-level services depend on ZIF_MDQ_REPOSITORY interface.
+
+- Clean ABAP:
+  * Strict OO approach (no procedural code or include scripts).
+  * Uppercase names for custom Z objects (ZCL_MDQ_*, ZIF_MDQ_*, ZMDQ_*).
+  * Class-based exceptions (CX_MDQ_QUALITY_ERROR).
+  * Performance: No SELECT inside LOOPs, FOR ALL ENTRIES IN for R/3, HANA Pushdown for S/4HANA.
+
+- Security & Compliance:
+  * SAP Application Logging via BAL_LOG_* / CL_BALI_LOGGER.
+  * Explicit AUTHORITY-CHECK per business domain (M_MATE_STA, V_VBAK_VKO, F_BKPF_BUK, B_BUPA_GRP).
+  * Strict Read-Only mode (NFR-004 & NFR-005).
+
+================================================================================

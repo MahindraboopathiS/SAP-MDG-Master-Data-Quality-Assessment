@@ -1,0 +1,20 @@
+[
+  {
+    "MANDT": "100",
+    "PARTNER": "0000300001",
+    "TYPE": "2",
+    "NAME_ORG1": "Tech Solutions International GmbH",
+    "NAME_FIRST": "",
+    "NAME_LAST": "",
+    "BU_SORT1": "TECHSOL"
+  },
+  {
+    "MANDT": "100",
+    "PARTNER": "0000300002",
+    "TYPE": "1",
+    "NAME_ORG1": "",
+    "NAME_FIRST": "John",
+    "NAME_LAST": "Doe",
+    "BU_SORT1": "DOE"
+  }
+]

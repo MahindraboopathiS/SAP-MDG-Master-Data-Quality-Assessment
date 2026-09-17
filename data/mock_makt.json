@@ -1,0 +1,26 @@
+[
+  {
+    "MANDT": "100",
+    "MATNR": "000000000000001001",
+    "SPRAS": "E",
+    "MAKTX": "Industrial Water Pump 500W"
+  },
+  {
+    "MANDT": "100",
+    "MATNR": "000000000000001002",
+    "SPRAS": "E",
+    "MAKTX": ""
+  },
+  {
+    "MANDT": "100",
+    "MATNR": "000000000000001003",
+    "SPRAS": "E",
+    "MAKTX": "Steel Sheet 5mm Grade A"
+  },
+  {
+    "MANDT": "100",
+    "MATNR": "000000000000001004",
+    "SPRAS": "E",
+    "MAKTX": "Industrial Water Pump 500W"
+  }
+]

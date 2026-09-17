@@ -1,0 +1,50 @@
+[
+  {
+    "MANDT": "100",
+    "MATNR": "000000000000001001",
+    "MTART": "FERT",
+    "MATKL": "00101",
+    "MEINS": "EA",
+    "BRGEW": 12.500,
+    "NTGEW": 10.000,
+    "GEWEI": "KG",
+    "MSTAE": "",
+    "LVORM": ""
+  },
+  {
+    "MANDT": "100",
+    "MATNR": "000000000000001002",
+    "MTART": "HAWA",
+    "MATKL": "00202",
+    "MEINS": "",
+    "BRGEW": 0.000,
+    "NTGEW": 0.000,
+    "GEWEI": "",
+    "MSTAE": "",
+    "LVORM": ""
+  },
+  {
+    "MANDT": "100",
+    "MATNR": "000000000000001003",
+    "MTART": "ROH",
+    "MATKL": "",
+    "MEINS": "KG",
+    "BRGEW": 50.000,
+    "NTGEW": 48.000,
+    "GEWEI": "KG",
+    "MSTAE": "01",
+    "LVORM": ""
+  },
+  {
+    "MANDT": "100",
+    "MATNR": "000000000000001004",
+    "MTART": "FERT",
+    "MATKL": "00101",
+    "MEINS": "EA",
+    "BRGEW": 15.000,
+    "NTGEW": 14.000,
+    "GEWEI": "KG",
+    "MSTAE": "",
+    "LVORM": ""
+  }
+]

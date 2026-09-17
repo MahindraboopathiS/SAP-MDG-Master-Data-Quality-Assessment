@@ -1,0 +1,38 @@
+/* Custom styling for SAP Master Data Quality Checker Dashboard */
+
+.mdqTileCard {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: #ffffff;
+  border-top: 4px solid #0a6ed1;
+}
+
+.mdqTileCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.sapMGenericTile {
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Severity Status Badges */
+.sapMObjStatusError {
+  font-weight: bold;
+}
+
+.sapMObjStatusWarning {
+  font-weight: bold;
+}
+
+.sapMObjStatusSuccess {
+  font-weight: bold;
+}
+
+/* Table styling */
+.sapMListTblHeader {
+  background-color: #f7f9fa;
+  border-bottom: 2px solid #d9d9d9;
+}
